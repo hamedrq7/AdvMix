@@ -51,7 +51,7 @@ def val_model_init():
     )
 
     if cfg.TEST.MODEL_FILE:
-        missing_keys, unexpected_keys = model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE), strict=False)
+        missing_keys, unexpected_keys = model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE)['model'], strict=False)
         print('Pre-trained weights loaded.')
         if len(missing_keys) > 0 or len(unexpected_keys) > 0:
             print('Pre-trained weights missing keys:', missing_keys)

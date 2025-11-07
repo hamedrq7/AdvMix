@@ -58,6 +58,8 @@ def val_model_init():
     return model
 
 def val(distortion_name, severity, model):
+    print(model)
+    exit()
     args = parse_args()
     args.corruption_type = distortion_name
     args.severity = severity

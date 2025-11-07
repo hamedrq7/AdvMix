@@ -4,17 +4,17 @@ CUDNN:
   DETERMINISTIC: false
   ENABLED: true
 DATA_DIR: ''
-GPUS: (0,1,2,3,4,5,6,7)
+GPUS: (0,)
 OUTPUT_DIR: 'output'
 LOG_DIR: 'log'
-WORKERS: 24
+WORKERS: 8
 PRINT_FREQ: 100
 
 DATASET:
-  COLOR_RGB: false
+  COLOR_RGB: true
   DATASET: 'coco'
-  ROOT: 'data/coco/'
-  TEST_SET: 'val2017'
+  ROOT: '/mnt/data/hossein/Hossein_workspace/nips_cetra/hamed/Pose-PG/datasets/COCO'  
+  TEST_SET: 'val2017' 
   TRAIN_SET: 'train2017'
   FLIP: true
   ROT_FACTOR: 40

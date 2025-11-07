@@ -196,7 +196,6 @@ def train_advmix(config, args, train_loader, models, criterion, optimizers, epoc
             save_debug_images(config, tmp, copy.deepcopy(meta), target, pred*4, outputs,
                             prefix)
 
-
 def validate(config, args, val_loader, val_dataset, model, criterion, output_dir,
              tb_log_dir, writer_dict=None, cpu=False):
     batch_time = AverageMeter()

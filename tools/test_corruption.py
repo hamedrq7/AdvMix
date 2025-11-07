@@ -111,7 +111,7 @@ def val(distortion_name, severity, model):
         batch_size=cfg.TEST.BATCH_SIZE_PER_GPU*len(cfg.GPUS),
         shuffle=False,
         num_workers=cfg.WORKERS,
-        pin_memory=True
+        pin_memory=False
     )
 
     # evaluate on validation set

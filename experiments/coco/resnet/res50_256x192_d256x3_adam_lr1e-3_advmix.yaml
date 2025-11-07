@@ -3,7 +3,7 @@ CUDNN:
   BENCHMARK: true
   DETERMINISTIC: false
   ENABLED: true
-DATA_DIR: ''
+DATA_DIR: '/mnt/data/hossein/Hossein_workspace/nips_cetra/hamed/Pose-PG/datasets'
 GPUS: (0,)
 OUTPUT_DIR: 'output'
 LOG_DIR: 'log'
@@ -13,7 +13,7 @@ PRINT_FREQ: 100
 DATASET:
   COLOR_RGB: true
   DATASET: 'coco'
-  ROOT: '/mnt/data/hossein/Hossein_workspace/nips_cetra/hamed/Pose-PG/datasets/COCO'  
+  ROOT: 'COCO'  
   TEST_SET: 'val2017' 
   TRAIN_SET: 'train2017'
   FLIP: true

@@ -166,7 +166,7 @@ def update_config(cfg, args):
     )
 
     if cfg.DATASET.DATASET == 'coco':
-        cfg.DATASET.ROOT_C = 'data/coco-C'
+        cfg.DATASET.ROOT_C = 'coco-C'
     else:
         cfg.DATASET.ROOT_C = 'data/mpii-C'
     

@@ -51,15 +51,20 @@ def val_model_init():
     )
 
     if cfg.TEST.MODEL_FILE:
-        model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE), strict=False)
-    
+        missing_keys, unexpected_keys = model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE), strict=False)
+        print('Pre-trained weights loaded.')
+        if len(missing_keys) > 0 or len(unexpected_keys) > 0:
+            print('Pre-trained weights missing keys:', missing_keys)
+            print('Pre-trained weights unexpected keys:', unexpected_keys)
+        else:
+            print('All pretrained weights keys matched')
+            
     model = torch.nn.DataParallel(model, device_ids=cfg.GPUS).cuda()
 
     return model
 
 def val(distortion_name, severity, model):
-    print(model)
-    exit()
+
     args = parse_args()
     args.corruption_type = distortion_name
     args.severity = severity
@@ -76,7 +81,6 @@ def val(distortion_name, severity, model):
 
     if cfg.TEST.MODEL_FILE:
         logger.info('=> loading model from {}'.format(cfg.TEST.MODEL_FILE))
-
     else:
         model_state_file = os.path.join(
             final_output_dir, 'final_state.pth'

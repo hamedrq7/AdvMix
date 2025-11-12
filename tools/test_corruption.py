@@ -50,8 +50,24 @@ def val_model_init():
         cfg, is_train=False
     )
 
+
+
     if cfg.TEST.MODEL_FILE:
-        missing_keys, unexpected_keys = model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE)['model'], strict=False)
+        checkpoint = torch.load(cfg.TEST.MODEL_FILE)
+
+        if '0.mean' in checkpoint['model'].keys() and '0.std' in checkpoint['model'].keys():
+            new_state_dict = {}
+            for k, v in checkpoint['model'].items():
+                if k.startswith("1."):
+                    new_key = k[2:]  # remove the first two characters ("1.")
+                else:
+                    new_key = k
+                new_state_dict[new_key] = v
+                # print(k, new_key)
+        else: 
+            new_state_dict = checkpoint['model']
+
+        missing_keys, unexpected_keys = model.load_state_dict(new_state_dict, strict=False)
         print('Pre-trained weights loaded.')
         if len(missing_keys) > 0 or len(unexpected_keys) > 0:
             print('Pre-trained weights missing keys:', missing_keys)

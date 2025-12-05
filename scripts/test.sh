@@ -43,9 +43,9 @@
 #     TEST.USE_GT_BBOX True
 
 
-exp_ID=AT_FastFGSM_Training
+exp_ID=PoseResnet-RotationPrediction
 cfg_file=experiments/coco/resnet/res50_256x192_d256x3_adam_lr1e-3_advmix.yaml
-checkpoint='/mnt/data/hossein/Hossein_workspace/nips_cetra/hamed/exps/AdvTraining_FAST_FGSM_RS_MIX_eps4_stepsize_2/20251109_1807/checkpoint_cln_best_mAP.pth'
+checkpoint='/mnt/data/hossein/Hossein_workspace/nips_cetra/hamed/exps/COCO-Rotation-Prediction/aux_weight_0.001/20251203_1039/checkpoint_best_pose_mAP.pth'
 
 python tools/test_corruption.py \
     --cfg  $cfg_file \
